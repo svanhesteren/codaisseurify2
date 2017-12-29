@@ -1,6 +1,6 @@
 <ul>
   <% for artist in @artists do %>
-    <li>name: <%= artist.name %></li>
+    <li>name: <%= link_to artist.name, artist_path(artist) %></li>
   <% end %>
 
 </ul>
