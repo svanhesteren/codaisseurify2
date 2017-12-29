@@ -14,7 +14,14 @@ mainUser = User.create!(email:"test@test.com", password:"123456");
 user =  User.create!(email:Faker::Internet.email,
                     password:Faker::Internet.password);
 
-artist = Artist.create!(
+artist1 = Artist.create!(
+  name: Faker::Lovecraft.deity,
+  picture: "",
+  birthday: Faker::Date.birthday(18, 4000),
+  fav_food: Faker::Food.dish
+);
+
+artist2 = Artist.create!(
   name: Faker::Lovecraft.deity,
   picture: "",
   birthday: Faker::Date.birthday(18, 4000),
@@ -25,9 +32,18 @@ artist = Artist.create!(
   Song.create!(
     name: Faker::TwinPeaks.quote,
     album: Faker::RickAndMorty.location,
-    length: Time.at(Random.rand(1000..3600)),#.utc.strftime("%H:%M:%S"),
+    duration: Time.at(Random.rand(1000..3600)),#.utc.strftime("%H:%M:%S"),
     rating: Random.rand(1..5),
-    artist: artist
+    artist: artist1
   );
+end
 
+5.times do
+  Song.create!(
+    name: Faker::TwinPeaks.quote,
+    album: Faker::RickAndMorty.location,
+    duration: Time.at(Random.rand(1000..3600)),#.utc.strftime("%H:%M:%S"),
+    rating: Random.rand(1..5),
+    artist: artist2
+  );
 end

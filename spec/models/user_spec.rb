@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  let!(:user) {create :user}
   # pending "add some examples to (or delete) #{__FILE__}"
   # let(:user) {create :user}
 
   it "Creates a new user" do
-    user = create(:user)
     # user = User.create!(email:Faker::Internet.email, password:Faker::Internet.password)
     expect(User.all).to include(user);
   end

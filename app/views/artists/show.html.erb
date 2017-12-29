@@ -1,0 +1,10 @@
+<%= image_tag @artist.picture %>
+<p>Name: <%= @artist.name %></p>
+<p>Birthdate: <%= @artist.birthday %></p>
+<p>Favourite food: <%= @artist.fav_food %></p>
+<p>Song list:</p>
+<ol>
+  <% for song in @artist.songs %>
+    <li><%= link_to song.name, song_path(song) %></li>
+  <% end %>
+</ol>
