@@ -4,6 +4,5 @@ FactoryBot.define do
     picture "MyString"
     birthday Faker::Date.birthday(18, 80)
     fav_food Faker::Food.dish
-    songs nil
   end
 end

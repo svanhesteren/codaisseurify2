@@ -14,5 +14,4 @@ RSpec.describe Song, type: :model do
     song.valid?
     expect(song.errors).to have_key(:artist);
   end
-  
 end
