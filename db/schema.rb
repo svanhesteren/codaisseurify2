@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 20171229141536) do
     t.string "fav_food"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "song_id"
-    t.index ["song_id"], name: "index_artists_on_song_id"
   end
 
   create_table "songs", force: :cascade do |t|
@@ -54,6 +52,5 @@ ActiveRecord::Schema.define(version: 20171229141536) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "artists", "songs"
   add_foreign_key "songs", "artists"
 end

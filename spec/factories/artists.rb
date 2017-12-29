@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :artist do
-    name "MyString"
+    name Faker::Lovecraft.deity
     picture "MyString"
-    birthday "2017-12-29"
-    fav_food "MyString"
+    birthday Faker::Date.birthday(18, 80)
+    fav_food Faker::Food.dish
     songs nil
   end
 end

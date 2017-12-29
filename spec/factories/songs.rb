@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :song do
-    name "MyString"
-    album "MyString"
-    length "2017-12-29 14:59:25"
-    rating ""
-    artist nil
+    name Faker::TwinPeaks.quote
+    album Faker::RickAndMorty.location
+    length Time.at(Random.rand(1000..3600))#.utc.strftime("%H:%M:%S")
+    rating Random.rand(1..5)
+    artist {build :artist}
   end
 end

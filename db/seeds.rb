@@ -5,3 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Song.destroy_all
+Artist.destroy_all
+User.destroy_all
+
+
+user =  User.create!(email:Faker::Internet.email,
+                    password:Faker::Internet.password);
+
+artist = Artist.create!(
+  name: Faker::Lovecraft.deity,
+  picture: "",
+  birthday: Faker::Date.birthday(18, 8000),
+  fav_food: Faker::Food.dish
+);
+
+10.times do
+  Song.create!(
+    name: Faker::TwinPeaks.quote,
+    album: Faker::RickAndMorty.location,
+    length: Time.at(Random.rand(1000..3600)),#.utc.strftime("%H:%M:%S"),
+    rating: Random.rand(1..5),
+    artist: artist
+  );
+
+end
