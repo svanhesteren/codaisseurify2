@@ -9,6 +9,7 @@ Song.destroy_all
 Artist.destroy_all
 User.destroy_all
 
+mainUser = User.create!(email:"test@test.com", password:"123456");
 
 user =  User.create!(email:Faker::Internet.email,
                     password:Faker::Internet.password);
@@ -16,7 +17,7 @@ user =  User.create!(email:Faker::Internet.email,
 artist = Artist.create!(
   name: Faker::Lovecraft.deity,
   picture: "",
-  birthday: Faker::Date.birthday(18, 8000),
+  birthday: Faker::Date.birthday(18, 4000),
   fav_food: Faker::Food.dish
 );
 
