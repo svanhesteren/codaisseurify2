@@ -9,12 +9,14 @@ NYAR = "http://res.cloudinary.com/duplhjlsw/image/upload/v1514580558/Nyarlathote
 YOG = "http://res.cloudinary.com/duplhjlsw/image/upload/v1514580558/yog-sothoth_xrphjo.jpg"
 CTHUL = "http://res.cloudinary.com/duplhjlsw/image/upload/v1514580557/Cthulhu_ocxtzm.jpg"
 AZA = "http://res.cloudinary.com/duplhjlsw/image/upload/v1514580557/azathoth_by_atomicgenjin-db1m0d4_ixcqw8.jpg"
+TSAT = "http://res.cloudinary.com/duplhjlsw/image/upload/v1514652943/Tsathoggua_yjn3hb.jpg"
 
 def getLovecraftPic(name)
-  return NYAR if name.include("Nyarlathotep")
-  return AZA if name.include("Azathoth")
-  return YOG if name.include("Yog-Sothoth")
-  return CTHUL if name.include("Cthulhu")
+  return NYAR if name.include?("Nyarlathotep")
+  return AZA if name.include?("Azathoth")
+  return YOG if name.include?("Yog-Sothoth")
+  return CTHUL if name.include?("Cthulhu")
+  return TSAT if name.include?("Tsathoggua")
   return "http://res.cloudinary.com/duplhjlsw/image/upload/v1513276776/uuimkavta7dqzn3njh5f.jpg"
 end
 
@@ -29,22 +31,20 @@ mainUser = User.create!(email:"test@test.com", password:"123456");
 user =  User.create!(email:Faker::Internet.email,
                     password:Faker::Internet.password);
 
-artist1 = Artist.create!(
+artists = []
+
+4.times do
+  artists << Artist.create!(
   name: Faker::Lovecraft.deity,
-  # picture: "",
   birthday: Faker::Date.birthday(18, 4000),
   fav_food: Faker::Food.dish
-);
+  )
+end
 
-artist2 = Artist.create!(
-  name: Faker::Lovecraft.deity,
-  # picture: "",
-  birthday: Faker::Date.birthday(18, 4000),
-  fav_food: Faker::Food.dish
-);
+for artist in artists
+  templatePhoto = Photo.create!(artist: artist, remote_image_url: getLovecraftPic(artist.name))
+end
 
-templatePhoto = Photo.create!(artist: artist1, remote_image_url: getLovecraftPic(artist1.name))
-templatePhoto = Photo.create!(artist: artist2, remote_image_url: getLovecraftPic(artist2.name))
 
 
 
@@ -54,7 +54,7 @@ templatePhoto = Photo.create!(artist: artist2, remote_image_url: getLovecraftPic
     album: Faker::RickAndMorty.location,
     duration: Time.at(Random.rand(1000..3600)),#.utc.strftime("%H:%M:%S"),
     rating: Random.rand(1..5),
-    artist: artist1
+    artist: artists[0]
   );
 end
 
@@ -64,6 +64,6 @@ end
     album: Faker::RickAndMorty.location,
     duration: Time.at(Random.rand(1000..3600)),#.utc.strftime("%H:%M:%S"),
     rating: Random.rand(1..5),
-    artist: artist2
+    artist: artists[2]
   );
 end

@@ -1,6 +1,19 @@
-<ul>
-  <% for artist in @artists do %>
-    <li>name: <%= link_to artist.name, artist_path(artist) %></li>
+<div class="container">
+  <div class="jumbotron">
+    <h2>Welcome to Codaisseurify!!!</h2>
+    <p>These are all the current artists</p>
+
+  </div>
+  <div class="row">
+  <% if @artists.any? %>
+      <% for artist in @artists do %>
+      <div class="col-md-4 well-sm">
+        <%= link_to (image_tag artist.photo.image, class: "img-thumbnail"), artist_path(artist) %>
+        <h3><%= link_to artist.name, artist_path(artist) %></h3>
+      </div>
+      <% end %>
+
   <% end %>
 
-</ul>
+</div>
+</div>
