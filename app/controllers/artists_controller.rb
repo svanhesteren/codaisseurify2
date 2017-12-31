@@ -48,7 +48,7 @@ class ArtistsController < ApplicationController
         @artist.photo.destroy if @artist.photo
         @artist.photo = Photo.new(image: params[:photo], artist: @artist)
       end
-      redirect_to artists_path, notice: "Artist successfully created"
+      redirect_to artists_path, notice: "Artist successfully updated"
     else
       render :edit
     end
