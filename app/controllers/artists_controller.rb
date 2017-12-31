@@ -25,9 +25,9 @@ class ArtistsController < ApplicationController
 
     if @artist.save
       # image_params.each do |image|
-
-      @artist.photo = Photo.new(image: params[:photo], artist: @artist)
-      # end
+      if params[:photo]
+        @artist.photo = Photo.new(image: params[:photo], artist: @artist)
+      end
       # redirect_to edit_artist_path(@artist), notice: "Artist successfully created"
       redirect_to artists_path, notice: "Artist successfully created"
     else
@@ -42,8 +42,10 @@ class ArtistsController < ApplicationController
   def update
     if @artist.update(artist_params)
       # image_params.each do |image|
-      @artist.photo = Photo.new(image: params[:photo], artist: @artist)
-      # end
+      if params[:photo]
+        @artist.photo.destroy if @artist.photo
+        @artist.photo = Photo.new(image: params[:photo], artist: @artist)
+      end
       # redirect_to edit_artist_path(@artist), notice: "Artist successfully updated"
       redirect_to artists_path, notice: "Artist successfully created"
     else
@@ -64,7 +66,7 @@ class ArtistsController < ApplicationController
   end
 
   def artist_params
-    params.require(:artist).permit(:name, :fav_food, :Birthday, :songs, :photo)
+    params.require(:artist).permit(:name, :fav_food, :birthday, :songs, :photo)
   end
 
 end

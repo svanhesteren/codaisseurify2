@@ -10,7 +10,7 @@
       <% for artist in @artists do %>
       <div class="col-md-4 well-sm">
         <% if artist.photo %>
-          <%= link_to (image_tag artist.photo.image, alt: artist.name, class: "img-thumbnail"), artist_path(artist) %>
+          <%= link_to (image_tag artist.photo.image, class: "img-thumbnail"), artist_path(artist) %>
         <% end %>
         <h3><%= link_to artist.name, artist_path(artist) %></h3>
       </div>
