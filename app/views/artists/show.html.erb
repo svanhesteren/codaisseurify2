@@ -10,8 +10,8 @@
     <p>Birthday: <%= @artist.birthday %></p>
     <p>Favourite food: <%= @artist.fav_food %></p>
     <p>Song list:</p>
-    <%= link_to "Add new song", new_artist_song_path(artist_id: @artist), method: :get, class: "btn btn-default" %>
-    <%= link_to "Delete all songs", artist_path(@artist) , class: "btn btn-default", method: :remove_all_songs, data: {confirm: "This will remove all songs from this artist."} %>
+    <%= link_to "Add new song", new_artist_song_path(artist_id: @artist.id), class: "btn btn-default" %>
+    <!-- <%#= link_to "Delete all songs", artist_path(@artist) , class: "btn btn-default", method: :remove_all_songs, data: {confirm: "This will remove all songs from this artist."} %> -->
     <ol>
       <% for song in @artist.songs %>
         <li><%= link_to song.name, song_path(song) %></li>

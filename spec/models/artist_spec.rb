@@ -4,12 +4,10 @@ require 'rails_helper'
     let!(:artist) {create :artist}
 
     it "creates an artist" do
-      # artist = Artist.create
       expect(Artist.all).to include(artist);
     end
 
     it "is allowed to have no songs" do
-      # artist = Artist.create
       expect(artist.songs.length).to eq(0);
     end
 
@@ -17,6 +15,11 @@ require 'rails_helper'
       expect {artist.destroy}.to change(Artist, :count).by(-1)
     end
 
+    it "cannot be without a name" do
+      artist = Artist.new()
+      artist.valid?
+      expect(artist.errors).to have_key(:name)
+    end
 end
 
 describe "Artist Relations" do

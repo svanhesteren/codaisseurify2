@@ -9,9 +9,7 @@ RSpec.describe Song, type: :model do
   let!(:song4) {create :song, artist: artist}
 
   it "Creates a new song" do
-    artist = Artist.create;
-    song = Song.create(artist: artist);
-    expect(Song.all).to include(song);
+    expect(Song.all).to include(song1)
   end
 
   it "cannot be made without an artist" do
@@ -26,5 +24,11 @@ RSpec.describe Song, type: :model do
 
   it "can destroy all songs from an artists" do
     expect {artist.songs.destroy_all}.to change(Song, :count).by(-4)
+  end
+
+  it "cannot be without a name" do
+    song = Song.new()
+    song.valid?
+    expect(song.errors).to have_key(:name)
   end
 end

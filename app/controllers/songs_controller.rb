@@ -7,12 +7,12 @@ class SongsController < ApplicationController
   end
 
   def new
-    @song = Song.songs.create
-    # @song = @artist.songs.create
+
+    @song = Song.new()
   end
 
   def create
-    # @artist = @song.artist
+    @artist = Artist.find(song_params[:artist_id])
     @song = @artist.songs.create(song_params)
 
     if @song.save
@@ -23,6 +23,7 @@ class SongsController < ApplicationController
   end
 
   def edit
+    @artist = @song.artist
   end
 
   def update
@@ -50,7 +51,7 @@ class SongsController < ApplicationController
 
   def set_artist
     @artist = Artist.find(params[:artist_id])
-    # puts "artist = " + @artist.name
+
   end
 
   def set_song
