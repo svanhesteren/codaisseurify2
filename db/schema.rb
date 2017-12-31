@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20171229203646) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
-    t.string "picture"
     t.date "birthday"
     t.string "fav_food"
     t.datetime "created_at", null: false

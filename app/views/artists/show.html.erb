@@ -1,15 +1,19 @@
 
 <div class="container">
 
-  <%= image_tag @artist.photo.image %>
-  <p>Name: <%= @artist.name %></p>
-  <p>Birthdate: <%= @artist.birthday %></p>
-  <p>Favourite food: <%= @artist.fav_food %></p>
-  <p>Song list:</p>
-  <ol>
-    <% for song in @artist.songs %>
-      <li><%= link_to song.name, song_path(song) %></li>
-    <% end %>
-  </ol>
+  <%= link_to "Edit Artist", edit_artist_path, class: "btn btn-default" %>
+  <%= link_to "Remove Artist", artist_path( @artist ), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
+  <div class="container">
+    <%= image_tag @artist.photo.image if @artist.photo %>
+    <p>Name: <%= @artist.name %></p>
+    <p>Birthday: <%= @artist.birthday %></p>
+    <p>Favourite food: <%= @artist.fav_food %></p>
+    <p>Song list:</p>
+    <ol>
+      <% for song in @artist.songs %>
+        <li><%= link_to song.name, song_path(song) %></li>
+      <% end %>
+    </ol>
 
+  </div>
 </div>
