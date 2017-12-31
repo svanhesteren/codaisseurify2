@@ -9,5 +9,9 @@ RSpec.describe Photo, type: :model do
     expect(artist1.photo).to eq(photo1)
   end
 
+  it "can destroy a photo from an artist" do
+    expect { artist1.photo.destroy }.to change(Photo, :count).by(-1)
+  end
+  
 
 end
