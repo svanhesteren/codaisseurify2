@@ -1,9 +1,10 @@
 
 <div class="container">
-
+  <%= link_to "Edit Song", edit_song_path, class: "btn btn-default" %>
+  <%= link_to "Remove Song", song_path( @song ), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
   <p>Song name: <%= @song.name %></p>
   <p>Length: <%= @song.duration.utc.strftime("%H:%M:%S") %></p>
   <p>Album: <%= @song.album %></p>
-
+  <p>Rating: <%= @song.rating %>/5</p>
 
 </div>

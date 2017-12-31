@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: [:show, :edit, :update, :destroy]
+  before_action :set_artist, only: [:show, :edit, :update, :destroy, :delete_all_songs]
 
   def index
     @artists = Artist.all;
@@ -20,8 +20,13 @@ class ArtistsController < ApplicationController
     redirect_to root_path, notice: "Artist removed"
   end
 
+  def remove_all_songs
+    @artist.songs.destroy_all
+    redirect_to artist_path(@artist), notice: "All songs removed from this artist"
+  end
+
   def create
-    @artist = Artist.create(artist_params)
+    @artist = Artist.new(artist_params)
 
     if @artist.save
       # image_params.each do |image|
