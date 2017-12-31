@@ -26,10 +26,10 @@ Song.destroy_all
 Artist.destroy_all
 User.destroy_all
 
-mainUser = User.create!(email:"test@test.com", password:"123456");
-
-user =  User.create!(email:Faker::Internet.email,
-                    password:Faker::Internet.password);
+# mainUser = User.create!(email:"test@test.com", password:"123456");
+#
+# user =  User.create!(email:Faker::Internet.email,
+#                     password:Faker::Internet.password);
 
 artists = []
 
