@@ -1,0 +1,4 @@
+<% for song in @artist.songs %>
+  <li id="item-<%= song.id %>"><%= link_to song.name, song_path(song) %> - <a href="" class="destroy-song" id="<%= song.id %>">Remove</a></li>
+
+<% end %>

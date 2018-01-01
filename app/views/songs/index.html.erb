@@ -2,7 +2,7 @@
 
   <ul>
     <% for song in @songs do %>
-      <li><%= link_to "Song name: #{song.name}", song_path(song) %></li>
+      <li id="song-item"><%= link_to "Song name: #{song.name}", song_path(song) %></li>
     <% end %>
   </ul>
 

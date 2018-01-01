@@ -1,7 +1,9 @@
 
 <div class="container">
+  <!-- <div id="artist-id" data-id="<%= @artist.id %>"</div> -->
   <%= link_to "Edit Song", edit_song_path(@song), class: "btn btn-default" %>
-  <%= link_to "Remove Song", song_path( @song ), class: "btn btn-default", method: :delete, data: { confirm: "Are you sure?" } %>
+  <!-- <%#= link_to "Remove Song", song_path( @song ), class: "btn btn-default destroy-song", data: { confirm: "Are you sure?" } %> -->
+  <!-- <a href="#" id="destroy-song">Clean up</a> -->
   <p>Song name: <%= @song.name %></p>
   <p>Length: <%= @song.duration.utc.strftime("%H:%M:%S") %></p>
   <p>Album: <%= @song.album %></p>

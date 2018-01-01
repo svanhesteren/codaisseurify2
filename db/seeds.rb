@@ -48,7 +48,7 @@ end
 
 
 
-10.times do
+5.times do
   Song.create!(
     name: Faker::TwinPeaks.quote,
     album: Faker::RickAndMorty.location,
@@ -64,6 +64,26 @@ end
     album: Faker::RickAndMorty.location,
     duration: Time.at(Random.rand(1000..3600)),#.utc.strftime("%H:%M:%S"),
     rating: Random.rand(1..5),
+    artist: artists[1]
+  );
+end
+
+5.times do
+  Song.create!(
+    name: Faker::TwinPeaks.quote,
+    album: Faker::RickAndMorty.location,
+    duration: Time.at(Random.rand(1000..3600)),#.utc.strftime("%H:%M:%S"),
+    rating: Random.rand(1..5),
     artist: artists[2]
+  );
+end
+
+5.times do
+  Song.create!(
+    name: Faker::TwinPeaks.quote,
+    album: Faker::RickAndMorty.location,
+    duration: Time.at(Random.rand(1000..3600)),#.utc.strftime("%H:%M:%S"),
+    rating: Random.rand(1..5),
+    artist: artists[3]
   );
 end
