@@ -13,6 +13,7 @@ function createSong(params) {
   })
   .done(function(data) {
     console.log(data);
+
     // <li id="item-<%= song.id %>"><%= link_to song.name, song_path(song) %> - <a href="" class="destroy-song" id="<%= song.id %>">Remove</a></li>
     // console.log($("#new_song"));
     // var item = $(`<li id="item-${@song.id}">`)
