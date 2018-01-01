@@ -12,10 +12,12 @@
     <p>Favourite food: <%= @artist.fav_food %></p>
     <div class="container" id="song-container">
     <p>Song list:</p>
-    <%= link_to "Add new song", new_artist_song_path(artist_id: @artist.id), class: "btn btn-default" %>
+    <!-- <%#= link_to "Add new song", new_artist_song_path(artist_id: @artist.id), class: "btn btn-default" %> -->
     <ol id="song-list">
       <%= render 'songs', artist: @artist %>
     </ol>
     </div>
+    <%= render "songs/form" %>
+    <!-- <a href="" class="btn btn-default add-song">Add song</a> -->
   </div>
 </div>
